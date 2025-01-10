@@ -1,0 +1,98 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
+  margin: 0;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: 400;
+}
+
+/* Mobile/Main Text */
+.main-text-with-opacity {
+  color: var(--Opacity_60);
+}
+
+/* Mobile/Small Text */
+.small-text {
+  font-size: 14px;
+}
+.container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.pageContentWrapper {
+  margin: 16px 0;
+  gap: 16px;
+  /* За замовчуванням секції одна під одною */
+  display: flex;
+  flex-direction: column;
+}
+.section {
+  position: relative;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+  .pageContentWrapper {
+    margin: 32px 0;
+    justify-content: space-between;
+    /* Вирівнювання секцій із проміжком між ними */
+    gap: 16px;
+  }
+  .section {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+  .pageContentWrapper {
+    flex-direction: row;
+    /* Горизонтальне розташування секцій */
+    gap: 32px;
+    margin: 32px;
+  }
+  .section {
+    margin: 0;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
