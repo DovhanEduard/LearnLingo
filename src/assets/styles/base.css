@@ -35,54 +35,10 @@ h1 {
   margin: 0 auto;
 }
 
-.pageContentWrapper {
-  margin: 16px 0;
-  gap: 16px;
-  /* За замовчуванням секції одна під одною */
-  display: flex;
-  flex-direction: column;
-}
 .section {
   position: relative;
   margin-left: 16px;
   margin-right: 16px;
-}
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-  .pageContentWrapper {
-    margin: 32px 0;
-    justify-content: space-between;
-    /* Вирівнювання секцій із проміжком між ними */
-    gap: 16px;
-  }
-  .section {
-    margin-left: 32px;
-    margin-right: 32px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-  }
-  .pageContentWrapper {
-    flex-direction: row;
-    /* Горизонтальне розташування секцій */
-    gap: 32px;
-    margin: 32px;
-  }
-  .section {
-    margin: 0;
-  }
-}
-
-.loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .visually-hidden {
