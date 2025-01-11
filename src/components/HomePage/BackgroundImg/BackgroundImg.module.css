@@ -1,0 +1,6 @@
+.background {
+  border-radius: 30px;
+  width: 568px;
+  height: 530px;
+  background-color: var(--light-green);
+}

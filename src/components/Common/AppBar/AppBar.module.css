@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1184px;
+  margin: 0 auto;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.navList {
+  display: flex;
+  gap: 28px;
+}
+
+.navLink {
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.authListLink {
+  display: flex;
+  gap: 16px;
+}
+
+.loginLink {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.regLink {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background-color: #121417;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}

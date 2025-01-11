@@ -1,4 +1,6 @@
-import { useEffect, lazy, Suspense } from 'react';
+import Layout from 'components/Common/Layout/Layout';
+import HomePage from 'pages/HomePage';
+// import { useEffect, lazy, Suspense } from 'react';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 // const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
@@ -8,7 +10,9 @@ import { useEffect, lazy, Suspense } from 'react';
 function App() {
   return (
     <>
-      <h1>Hello</h1>
+      <Layout>
+        <HomePage />
+      </Layout>
     </>
   );
 }

@@ -4,14 +4,7 @@ html {
 
 body {
   background-color: var(--white);
-  font-family: 'Poppins', sans-serif;
-  color: var(--black);
   margin: 0;
-
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 h1 {
@@ -29,16 +22,8 @@ h1 {
   font-size: 14px;
 }
 .container {
-  width: 100%;
-  min-width: 320px;
-  max-width: 375px;
+  width: 1320px;
   margin: 0 auto;
-}
-
-.section {
-  position: relative;
-  margin-left: 16px;
-  margin-right: 16px;
 }
 
 .visually-hidden {
