@@ -1,6 +1,19 @@
 .background {
+  position: relative;
   border-radius: 30px;
   width: 568px;
   height: 530px;
   background-color: var(--light-green);
+}
+
+.headImg {
+  position: absolute;
+  top: 80px;
+  left: 115px;
+}
+
+.macImg {
+  position: absolute;
+  left: 88px;
+  bottom: 0px;
 }

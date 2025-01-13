@@ -1,6 +1,46 @@
 .background {
   border-radius: 30px;
+  padding: 98px 64px;
   width: 720px;
   height: 530px;
   background-color: #f8f8f8;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.16667;
+  letter-spacing: -0.02em;
+  color: var(--text-color-black);
+  width: 548px;
+  margin-bottom: 32px;
+}
+
+.colorAccent {
+  font-style: italic;
+  background-color: var(--light-green);
+}
+
+.textDesc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  letter-spacing: -0.02em;
+  color: var(--text-color-black);
+
+  width: 471px;
+  margin-bottom: 64px;
+}
+
+.link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
+  color: var(--text-color-black);
+
+  border-radius: 12px;
+  padding: 16px 88px;
+
+  height: 60px;
+  background-color: var(--green);
 }

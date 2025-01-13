@@ -1,5 +1,5 @@
 import Layout from 'components/Common/Layout/Layout';
-import HomePage from 'pages/HomePage';
+import HomePage from 'pages/HomePage/HomePage';
 // import { useEffect, lazy, Suspense } from 'react';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));

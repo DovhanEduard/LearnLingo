@@ -3,24 +3,27 @@ html {
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   background-color: var(--white);
   margin: 0;
 }
 
 h1 {
-  font-family: 'Gilroy', sans-serif;
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Mobile/Main Text */
+a {
+  display: inline-block;
+}
+
 .main-text-with-opacity {
   color: var(--Opacity_60);
 }
 
-/* Mobile/Small Text */
 .small-text {
   font-size: 14px;
 }
+
 .container {
   width: 1320px;
   margin: 0 auto;
