@@ -1,3 +1,7 @@
+.header {
+  background-color: var(--white);
+}
+
 .wrapper {
   display: flex;
   gap: 24px;
