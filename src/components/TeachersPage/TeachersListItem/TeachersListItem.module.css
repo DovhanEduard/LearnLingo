@@ -1,0 +1,121 @@
+.teacherAvatar {
+  border: 3px solid var(--light-green);
+  border-radius: 100px;
+  padding: 12px;
+  width: 120px;
+  height: 120px;
+}
+
+.wrapper {
+}
+
+.statsWrapper {
+  display: flex;
+  height: 26px;
+  margin-bottom: 8px;
+}
+
+.greyLangText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+  margin-right: 150px;
+}
+
+.statsList {
+  display: flex;
+  gap: 4px;
+  margin-right: 200px;
+}
+
+.statsListItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.statsListItem:not(:last-child) {
+  border-right: 1px solid #8a8a89;
+}
+
+.statsText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color-black);
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  color: #ffc531;
+}
+
+.accentColor {
+  color: #38cd3e;
+}
+
+.heartButton {
+  background-color: transparent;
+}
+
+.heartIcon {
+  width: 26px;
+  height: 26px;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--text-color-black);
+
+  margin-bottom: 32px;
+}
+
+.descInfoText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color-black);
+}
+
+.greyText {
+  color: var(--text-color-grey);
+}
+
+.readMoreLink {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--text-color-black);
+
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.languageLevelList {
+  display: flex;
+  gap: 8px;
+}
+
+.listItem {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14286;
+  color: var(--text-color-black);
+
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  height: 32px;
+}
+
+.listItem:first-child {
+  background-color: var(--green);
+}
