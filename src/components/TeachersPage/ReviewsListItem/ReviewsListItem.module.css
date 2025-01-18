@@ -1,0 +1,29 @@
+.reviewsAvatarWrapper {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color-grey);
+  margin-bottom: 4px;
+}
+
+.rating {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: var(--text-color-black);
+  display: flex;
+  gap: 1px;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  color: #ffc531;
+}

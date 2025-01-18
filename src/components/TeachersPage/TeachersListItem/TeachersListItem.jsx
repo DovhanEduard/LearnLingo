@@ -2,9 +2,16 @@ import css from './TeachersListItem.module.css';
 import { MdOutlineStar } from 'react-icons/md';
 import { FiBookOpen } from 'react-icons/fi';
 import { FaRegHeart } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { useState } from 'react';
+import ReviewsList from '../ReviewsList/ReviewsList';
 
 const TeachersListItem = () => {
+  const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsReadMoreOpen(!isReadMoreOpen);
+  };
+
   return (
     <>
       <img
@@ -59,12 +66,46 @@ const TeachersListItem = () => {
           personalized study plans.
         </p>
 
-        <Link className={css.readMoreLink}>Read more</Link>
+        {!isReadMoreOpen && (
+          <button
+            type="button"
+            onClick={handleClick}
+            className={css.readMoreBtn}
+          >
+            Read more
+          </button>
+        )}
+
+        {isReadMoreOpen && (
+          <div className={css.descriptionWrapper}>
+            <p className={css.teacherDescription}>
+              Jane is an experienced and dedicated language teacher specializing
+              in German and French. She holds a Bachelor&apos;s degree in German
+              Studies and a Master&apos;s degree in French Literature. Her
+              passion for languages and teaching has driven her to become a
+              highly proficient and knowledgeable instructor. With over 10 years
+              of teaching experience, Jane has helped numerous students of
+              various backgrounds and proficiency levels achieve their language
+              learning goals. She is skilled at adapting her teaching methods to
+              suit the needs and learning styles of her students, ensuring that
+              they feel supported and motivated throughout their language
+              journey.
+            </p>
+
+            <ReviewsList />
+          </div>
+        )}
 
         <ul className={css.languageLevelList}>
           <li className={css.listItem}>#A1 Beginner</li>
           <li className={css.listItem}>#A2 Elementary</li>
         </ul>
+
+        {isReadMoreOpen && (
+          <button className={css.bookTrialBtn} type="button">
+            Book trial lesson
+          </button>
+        )}
       </div>
     </>
   );
