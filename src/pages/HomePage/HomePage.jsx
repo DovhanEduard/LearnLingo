@@ -11,11 +11,11 @@ import { useEffect } from 'react';
 
 const HomePage = () => {
   useEffect(() => {
-    console.log(regFunc());
+    regFunc();
   }, []);
 
   const regFunc = async () => {
-    signInWithEmailAndPassword(auth, 'test5@gmail.com', '12345678')
+    signInWithEmailAndPassword(auth, 'test4@gmail.com', '12345678')
       .then(userCredential => {
         // Signed up
         const user = userCredential.user;

@@ -2,19 +2,19 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
+import { env } from '../utils/env';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyA096ctO7BrKfZ9PolzV10FDh0ImEUqrrE',
-  authDomain: 'learnlingo-e1004.firebaseapp.com',
-  projectId: 'learnlingo-e1004',
-  storageBucket: 'learnlingo-e1004.firebasestorage.app',
-  messagingSenderId: '256476541611',
-  appId: '1:256476541611:web:cdb25b4d9c60f3ec1bfdee',
-  databaseURL:
-    'https://learnlingo-e1004-default-rtdb.europe-west1.firebasedatabase.app/',
+  apiKey: env('VITE_API_KEY'),
+  authDomain: env('VITE_AUTH_DOMAIN'),
+  projectId: env('VITE_PROJECT_ID'),
+  storageBucket: env('VITE_STORAGE_BUCKET'),
+  messagingSenderId: env('VITE_MESSAGING_SENDER_ID'),
+  appId: env('VITE_APP_ID'),
+  databaseURL: env('VITE_DATABASE_URL'),
 };
 
 // Initialize Firebase
