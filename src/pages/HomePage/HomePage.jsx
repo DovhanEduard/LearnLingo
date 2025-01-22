@@ -2,33 +2,20 @@ import css from './HomePage.module.css';
 import About from 'components/HomePage/About/About';
 import AdvantagesList from 'components/HomePage/AdvantagesList/AdvantagesList';
 import BackgroundImg from 'components/HomePage/BackgroundImg/BackgroundImg';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
-import { auth } from '../../firebase/firebase';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { login, logout, register } from '../../redux/auth/operations';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    regFunc();
-  }, []);
-
-  const regFunc = async () => {
-    signInWithEmailAndPassword(auth, 'test4@gmail.com', '12345678')
-      .then(userCredential => {
-        // Signed up
-        const user = userCredential.user;
-        console.log(user);
+    dispatch(
+      login({
+        email: 'test12@gmail.com',
+        password: '12345678',
       })
-      .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-
-        // ..
-      });
-  };
+    );
+  }, [dispatch]);
 
   return (
     <section>

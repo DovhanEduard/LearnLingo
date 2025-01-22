@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+} from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 import { env } from '../utils/env';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,5 +23,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
+
+// Set persistence before any authentication actions
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log('Persistenced');
+  })
+  .catch(error => {
+    console.log('Error', error.message);
+  });
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    // User is signed in, see the user's profile
+    console.log('User is signed in:', user);
+    // Redirect to the user's dashboard or other protected content
+  } else {
+    // User is signed out
+    console.log('User is signed out');
+    // Redirect to the login page
+  }
+});
 
 export { app, auth, database };
