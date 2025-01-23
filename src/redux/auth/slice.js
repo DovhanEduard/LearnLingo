@@ -45,20 +45,6 @@ export const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(refreshUser.pending, state => {
-        state.error = null;
-        state.isRefreshing = true;
-      })
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.isLoggedIn = true;
-        state.user = action.payload;
-        state.isRefreshing = false;
-      })
-      .addCase(refreshUser.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isRefreshing = false;
-      })
-
       .addCase(logout.pending, state => {
         state.error = null;
       })
@@ -66,6 +52,21 @@ export const authSlice = createSlice({
         return INITIAL_STATE;
       })
       .addCase(logout.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isRefreshing = false;
+      })
+
+      .addCase(refreshUser.pending, state => {
+        state.error = null;
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
+        state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
+        state.user = action.payload.user;
+      })
+      .addCase(refreshUser.rejected, (state, action) => {
         state.error = action.payload;
         state.isRefreshing = false;
       }),

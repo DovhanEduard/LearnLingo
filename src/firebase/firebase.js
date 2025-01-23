@@ -32,17 +32,4 @@ setPersistence(auth, browserLocalPersistence)
   .catch(error => {
     console.log('Error', error.message);
   });
-
-auth.onAuthStateChanged(user => {
-  if (user) {
-    // User is signed in, see the user's profile
-    console.log('User is signed in:', user);
-    // Redirect to the user's dashboard or other protected content
-  } else {
-    // User is signed out
-    console.log('User is signed out');
-    // Redirect to the login page
-  }
-});
-
 export { app, auth, database };

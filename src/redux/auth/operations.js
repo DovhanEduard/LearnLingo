@@ -69,13 +69,21 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const token = state.auth.token;
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          // User is signed in, see the user's profile
+          console.log('User is signed in:', user);
 
-      setAuthToken(token);
-      const { data } = await instance.get('users/current');
-
-      return data;
+          return {
+            user: { email: user.email, name: user.displayName },
+            token: user.stsTokenManager.accessToken,
+            refreshToken: user.stsTokenManager.refreshToken,
+          };
+        } else {
+          console.log('User is signed out');
+          return thunkAPI.rejectWithValue('User is signed out');
+        }
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

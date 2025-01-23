@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/slice';
+import { teachersReducer } from './teachers/slice';
 
 import {
   persistStore,
@@ -21,6 +22,7 @@ const authConfig = {
 
 export const store = configureStore({
   reducer: {
+    teachers: teachersReducer,
     auth: persistReducer(authConfig, authReducer),
   },
   middleware: getDefaultMiddleware =>

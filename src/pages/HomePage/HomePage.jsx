@@ -5,18 +5,17 @@ import BackgroundImg from 'components/HomePage/BackgroundImg/BackgroundImg';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login, logout, register } from '../../redux/auth/operations';
+import { getTeachers } from '../../redux/teachers/operations';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(
-      login({
-        email: 'test12@gmail.com',
-        password: '12345678',
-      })
-    );
+    dispatch(getTeachers());
   }, [dispatch]);
-
+  // login({
+  //   email: 'test12@gmail.com',
+  //   password: '12345678',
+  // })
   return (
     <section>
       <div className="container">
