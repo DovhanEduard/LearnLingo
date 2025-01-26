@@ -10,3 +10,6 @@
   width: 100%;
   background-color: var(--white);
 }
+.teachersListItem:not(:last-child) {
+  margin-bottom: 32px;
+}

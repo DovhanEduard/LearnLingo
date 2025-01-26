@@ -1,21 +1,21 @@
 import css from './ReviewsListItem.module.css';
 import { MdOutlineStar } from 'react-icons/md';
 
-const ReviewsListItem = () => {
+const ReviewsListItem = ({ review }) => {
   return (
     <div>
       <div className={css.reviewsAvatarWrapper}>
         <img src="/img/reviewImg.png" alt="review avatar" />
         <div>
-          <p className={css.reviewerName}>Frank</p>
+          <p className={css.reviewerName}>{review.reviewer_name}</p>
 
           <p className={css.rating}>
             <MdOutlineStar className={css.starIcon} />
-            4.0
+            {review.reviewer_rating}.0
           </p>
         </div>
       </div>
-      <p>Jane&apos;s lessons were very helpful. I made good progress.</p>
+      <p>{review.comment}</p>
     </div>
   );
 };

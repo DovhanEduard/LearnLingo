@@ -4,8 +4,9 @@ import { FiBookOpen } from 'react-icons/fi';
 import { FaRegHeart } from 'react-icons/fa';
 import { useState } from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import { nanoid } from '@reduxjs/toolkit';
 
-const TeachersListItem = () => {
+const TeachersListItem = ({ teacher }) => {
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
 
   const handleClick = () => {
@@ -16,7 +17,7 @@ const TeachersListItem = () => {
     <>
       <img
         className={css.teacherAvatar}
-        src="/img/teacher-avatar.png"
+        src={teacher.avatar_url}
         alt="Teacher avatar"
       />
 
@@ -30,15 +31,20 @@ const TeachersListItem = () => {
               <p className={css.statsText}>Lessons online</p>
             </li>
             <li className={css.statsListItem}>
-              <p className={css.statsText}>Lessons done: 1098</p>
+              <p className={css.statsText}>
+                Lessons done: {teacher.lessons_done}
+              </p>
             </li>
             <li className={css.statsListItem}>
               <MdOutlineStar className={css.starIcon} />
-              <p className={css.statsText}>Rating: 4.8</p>
+              <p className={css.statsText}>Rating: {teacher.rating}</p>
             </li>
             <li className={css.statsListItem}>
               <p className={css.statsText}>
-                Price / 1 hour: <span className={css.accentColor}>30$</span>
+                Price / 1 hour:&nbsp;
+                <span className={css.accentColor}>
+                  {teacher.price_per_hour}$
+                </span>
               </p>
             </li>
           </ul>
@@ -48,22 +54,23 @@ const TeachersListItem = () => {
           </button>
         </div>
 
-        <h2 className={css.teacherName}>Jane Smith</h2>
+        <h2 className={css.teacherName}>
+          {teacher.name} {teacher.surname}
+        </h2>
 
         <p className={css.descInfoText}>
-          <span className={css.greyText}>Speaks:&nbsp;</span>German, French
+          <span className={css.greyText}>Speaks:&nbsp;</span>
+          {teacher.languages.join(', ')}
         </p>
 
         <p className={css.descInfoText}>
-          <span className={css.greyText}>Lesson Info:&nbsp;</span>Lessons are
-          structured to cover grammar, vocabulary, and practical usage of the
-          language.
+          <span className={css.greyText}>Lesson Info:&nbsp;</span>
+          {teacher.lesson_info}
         </p>
 
         <p className={css.descInfoText}>
-          <span className={css.greyText}>Conditions:&nbsp;</span>Welcomes both
-          adult learners and teenagers (13 years and above).Provides
-          personalized study plans.
+          <span className={css.greyText}>Conditions:&nbsp;</span>
+          {teacher.conditions.join(' ')}
         </p>
 
         {!isReadMoreOpen && (
@@ -78,27 +85,20 @@ const TeachersListItem = () => {
 
         {isReadMoreOpen && (
           <div className={css.descriptionWrapper}>
-            <p className={css.teacherDescription}>
-              Jane is an experienced and dedicated language teacher specializing
-              in German and French. She holds a Bachelor&apos;s degree in German
-              Studies and a Master&apos;s degree in French Literature. Her
-              passion for languages and teaching has driven her to become a
-              highly proficient and knowledgeable instructor. With over 10 years
-              of teaching experience, Jane has helped numerous students of
-              various backgrounds and proficiency levels achieve their language
-              learning goals. She is skilled at adapting her teaching methods to
-              suit the needs and learning styles of her students, ensuring that
-              they feel supported and motivated throughout their language
-              journey.
-            </p>
+            <p className={css.teacherDescription}>{teacher.experience}</p>
 
-            <ReviewsList />
+            <ReviewsList teacherReviews={teacher.reviews} />
           </div>
         )}
 
         <ul className={css.languageLevelList}>
-          <li className={css.listItem}>#A1 Beginner</li>
-          <li className={css.listItem}>#A2 Elementary</li>
+          {teacher.levels.map(level => {
+            return (
+              <li key={nanoid()} className={css.listItem}>
+                {level}
+              </li>
+            );
+          })}
         </ul>
 
         {isReadMoreOpen && (
