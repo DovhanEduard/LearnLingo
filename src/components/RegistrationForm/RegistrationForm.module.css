@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  width: 556px;
+  width: 566px;
   padding: 64px;
   /* background-color: rgb(224, 222, 222); */
 }
@@ -43,7 +43,7 @@
   margin-bottom: 20px;
 }
 
-.input:global(::placeholder) {
+.input::placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
