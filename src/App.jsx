@@ -1,8 +1,6 @@
 import Layout from 'components/Common/Layout/Layout';
 import FavoritesPage from 'pages/FavoritesPage';
 import HomePage from 'pages/HomePage/HomePage';
-import LogInPage from 'pages/LogInPage';
-import RegistrationPage from 'pages/RegistrationPage';
 import TeachersPage from 'pages/TeachersPage/TeachersPage';
 import { Route, Routes } from 'react-router';
 // import { useEffect, lazy, Suspense } from 'react';
@@ -20,8 +18,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/teachers" element={<TeachersPage />} />
-          <Route path="/logIn" element={<LogInPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       </Layout>
     </>

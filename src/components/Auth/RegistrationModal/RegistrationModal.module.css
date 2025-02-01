@@ -1,5 +1,6 @@
 .authModal {
   .modalContent {
     padding: 0;
+    border-radius: 30px;
   }
 }
