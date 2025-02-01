@@ -13,9 +13,7 @@ const LoginForm = () => {
   const onSubmit = data => console.log(data);
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
       <h2 className={css.loginFormTitile}>Log In</h2>
 
       <p className={css.loginFormDesc}>
@@ -32,6 +30,7 @@ const LoginForm = () => {
           <Input.Password
             className={css.input}
             placeholder="Password"
+            variant="borderless"
             {...field}
           />
         )}

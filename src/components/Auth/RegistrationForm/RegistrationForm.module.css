@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  width: 556px;
+  width: 566px;
   padding: 64px;
   /* background-color: rgb(224, 222, 222); */
 }
@@ -24,6 +24,13 @@
   margin-bottom: 40px;
 }
 
+.ant-input-affix-wrapper-focused {
+  background-color: transparent;
+  outline: transparent;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  box-shadow: none;
+}
+
 .input {
   font-weight: 400;
   font-size: 16px;
@@ -41,6 +48,15 @@
   font-size: 16px;
   line-height: 1.375;
   color: var(--text-color-black);
+}
+
+.input {
+  input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.375;
+    color: var(--text-color-black);
+  }
 }
 
 .loginFormBtn {

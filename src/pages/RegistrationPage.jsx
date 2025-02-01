@@ -1,12 +1,9 @@
-import AuthModal from 'components/Common/AuthModal/AuthModal';
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+import RegistrationModal from 'components/Auth/RegistrationModal/RegistrationModal';
 
 const RegistrationPage = () => {
   return (
     <div className="container">
-      <AuthModal>
-        <RegistrationForm />
-      </AuthModal>
+      <RegistrationModal />
     </div>
   );
 };

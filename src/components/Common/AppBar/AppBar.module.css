@@ -23,7 +23,7 @@
   padding-bottom: 12px;
 }
 
-.authListLink {
+.authListBtn {
   display: flex;
   gap: 16px;
 }
@@ -34,7 +34,7 @@
   color: var(--light-green);
 }
 
-.loginLink {
+.loginBtn {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.25;
@@ -47,7 +47,7 @@
   padding-bottom: 12px;
 }
 
-.regLink {
+.regBtn {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.25;
