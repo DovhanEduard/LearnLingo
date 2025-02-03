@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 
 const BookForm = ({ avatar, name, surname }) => {
   const schema = Yup.object().shape({
+    reason: Yup.string().required('Please select an option'),
     fullName: Yup.string()
       .min(2, 'Full name must be at least 2 characters')
       .max(50, 'Full name must be at most 50 characters')
@@ -107,9 +108,8 @@ const BookForm = ({ avatar, name, surname }) => {
           />
           <span>Culture, travel or hobby</span>
         </label>
+        {errors.reason && <p className={css.error}>{errors.reason.message}</p>}
       </div>
-
-      {errors.choice && <p className={css.error}>{errors.choice.message}</p>}
 
       <input
         className={css.input}
