@@ -1,36 +1,42 @@
+import css from './BookModal.module.css';
 import { useState } from 'react';
 import { Modal } from 'antd';
-import LoginForm from '../LoginForm/LoginForm';
-import css from './LoginModal.module.css';
+import BookForm from '../BookForm/BookForm';
 
-const LoginModal = ({ isLoginModalOpen, setIsLoginModalShow }) => {
+const BookModal = ({
+  isBookModalOpen,
+  setIsBookModalOpen,
+  avatar,
+  name,
+  surname,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOk = () => {
     setIsModalOpen(false);
-    setIsLoginModalShow(false);
+    setIsBookModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
-    setIsLoginModalShow(false);
+    setIsBookModalOpen(false);
   };
 
   return (
     <>
       <Modal
-        open={isModalOpen || isLoginModalOpen}
+        open={isModalOpen || isBookModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         className={css.authModal}
         footer={null}
-        width="566px"
+        width="600px"
         classNames={{ content: css.modalContent }}
         centered={true}
       >
-        <LoginForm />
+        <BookForm avatar={avatar} name={name} surname={surname} />
       </Modal>
     </>
   );
 };
 
-export default LoginModal;
+export default BookModal;

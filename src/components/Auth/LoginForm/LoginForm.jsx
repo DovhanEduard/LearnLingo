@@ -1,14 +1,28 @@
 import { useForm, Controller } from 'react-hook-form';
-import css from './LoginForm.module.css';
 import { Input } from 'antd';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import css from './LoginForm.module.css';
 
 const LoginForm = () => {
+  const schema = Yup.object().shape({
+    email: Yup.string()
+      .email('Invalid email format')
+      .required('Email is required'),
+
+    password: Yup.string()
+      .min(8, 'Password must be at least 8 characters long')
+      .required('Password is required'),
+  });
+
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = data => console.log(data);
 
@@ -23,6 +37,8 @@ const LoginForm = () => {
 
       <input className={css.input} placeholder="Email" {...register('email')} />
 
+      {errors.email && <p className={css.error}>{errors.email.message}</p>}
+
       <Controller
         name="password"
         control={control}
@@ -36,7 +52,9 @@ const LoginForm = () => {
         )}
       />
 
-      {errors.exampleRequired && <span>This field is required</span>}
+      {errors.password && (
+        <p className={css.error}>{errors.password.message}</p>
+      )}
 
       <button className={css.loginFormBtn} type="submit">
         Log In

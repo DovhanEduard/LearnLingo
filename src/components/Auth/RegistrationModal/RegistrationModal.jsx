@@ -25,6 +25,7 @@ const RegistrationModal = ({ isRegModalOpen, setIsRegModalShow }) => {
         footer={null}
         width="566px"
         classNames={{ content: css.modalContent }}
+        centered={true}
       >
         <RegistrationForm />
       </Modal>

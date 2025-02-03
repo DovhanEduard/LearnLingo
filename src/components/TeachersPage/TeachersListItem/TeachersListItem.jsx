@@ -5,9 +5,15 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useState } from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import { nanoid } from '@reduxjs/toolkit';
+import BookModal from '../BookModal/BookModal';
 
 const TeachersListItem = ({ teacher }) => {
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
+  const [isBookModalOpen, setIsBookModalOpen] = useState(false);
+
+  const openBookModal = () => {
+    setIsBookModalOpen(true);
+  };
 
   const handleClick = () => {
     setIsReadMoreOpen(!isReadMoreOpen);
@@ -102,10 +108,22 @@ const TeachersListItem = ({ teacher }) => {
         </ul>
 
         {isReadMoreOpen && (
-          <button className={css.bookTrialBtn} type="button">
+          <button
+            className={css.bookTrialBtn}
+            type="button"
+            onClick={openBookModal}
+          >
             Book trial lesson
           </button>
         )}
+
+        <BookModal
+          isBookModalOpen={isBookModalOpen}
+          setIsBookModalOpen={setIsBookModalOpen}
+          avatar={teacher.avatar_url}
+          name={teacher.name}
+          surname={teacher.surname}
+        />
       </div>
     </>
   );
