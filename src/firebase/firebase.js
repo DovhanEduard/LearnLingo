@@ -32,4 +32,5 @@ setPersistence(auth, browserLocalPersistence)
   .catch(error => {
     console.log('Error', error.message);
   });
+
 export { app, auth, database };

@@ -17,7 +17,6 @@ const TeachersList = () => {
 
   return (
     <ul className={css.teachersList}>
-      {teachersList.length > 0}
       {teachersList.map(teacher => {
         return (
           <li key={nanoid()} className={css.teachersListItem}>

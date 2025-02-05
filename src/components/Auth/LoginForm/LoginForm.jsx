@@ -3,8 +3,12 @@ import { Input } from 'antd';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/auth/operations';
 
-const LoginForm = () => {
+const LoginForm = ({ handelSubmit }) => {
+  const dispatch = useDispatch();
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Invalid email format')
@@ -24,7 +28,11 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    dispatch(login({ email: data.email, password: data.password }));
+
+    handelSubmit();
+  };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>

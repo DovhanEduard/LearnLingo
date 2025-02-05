@@ -1,3 +1,21 @@
 .teachersPage {
   background-color: #f8f8f8;
 }
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreBtn {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
+  color: var(--text-color-black);
+
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 183px;
+  height: 60px;
+  background-color: var(--green);
+}

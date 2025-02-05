@@ -14,6 +14,10 @@ const RegistrationModal = ({ isRegModalOpen, setIsRegModalShow }) => {
     setIsModalOpen(false);
     setIsRegModalShow(false);
   };
+  const handelSubmit = () => {
+    setIsModalOpen(false);
+    setIsRegModalShow(false);
+  };
 
   return (
     <>
@@ -26,8 +30,9 @@ const RegistrationModal = ({ isRegModalOpen, setIsRegModalShow }) => {
         width="566px"
         classNames={{ content: css.modalContent }}
         centered={true}
+        destroyOnClose={true}
       >
-        <RegistrationForm />
+        <RegistrationForm handelSubmit={handelSubmit} />
       </Modal>
     </>
   );

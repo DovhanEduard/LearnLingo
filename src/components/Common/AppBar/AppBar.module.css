@@ -23,6 +23,38 @@
   padding-bottom: 12px;
 }
 
+.loggedInBar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.userNameWrapper {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+}
+
+.userName {
+  font-weight: 700;
+}
+
+.logoutBtn {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #fff;
+
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background-color: #121417;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 .authListBtn {
   display: flex;
   gap: 16px;

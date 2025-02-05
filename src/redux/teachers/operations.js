@@ -1,22 +1,62 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { database } from '../../firebase/firebase';
-import { ref, child, get } from 'firebase/database';
+import {
+  ref,
+  query,
+  orderByKey,
+  limitToFirst,
+  startAfter,
+  get,
+} from 'firebase/database';
 
 export const getTeachers = createAsyncThunk(
   'teachers/getTeachers',
-  async (_, thunkAPI) => {
+  async (pageNumber = 1, thunkAPI) => {
+    const pageSize = 4;
+    const dbRef = ref(database, '/');
+
     try {
-      const dbRef = ref(database);
+      const state = thunkAPI.getState();
+      const lastKeys = state.teachers?.lastKeys || [];
 
-      const teachers = await get(child(dbRef, '/')).then(snapshot => {
-        if (snapshot.exists()) {
-          return snapshot.val();
-        } else {
-          return thunkAPI.rejectWithValue('No data available');
+      let teachersQuery;
+
+      if (pageNumber === 1) {
+        teachersQuery = query(dbRef, orderByKey(), limitToFirst(pageSize + 1));
+      } else {
+        const lastKey = lastKeys[pageNumber - 2];
+        if (!lastKey) {
+          return thunkAPI.rejectWithValue('No more pages available');
         }
-      });
 
-      return teachers;
+        teachersQuery = query(
+          dbRef,
+          orderByKey(),
+          startAfter(lastKey),
+          limitToFirst(pageSize + 1)
+        );
+      }
+
+      const snapshot = await get(teachersQuery);
+
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const keys = Object.keys(data);
+
+        const hasNextPage = keys.length > pageSize;
+
+        const displayedKeys = hasNextPage ? keys.slice(0, pageSize) : keys;
+
+        const lastKeyForNextPage = displayedKeys[displayedKeys.length - 1];
+        const teachers = displayedKeys.map(key => ({ id: key, ...data[key] }));
+        return {
+          teachers,
+          lastKey: lastKeyForNextPage,
+          hasNextPage,
+        };
+      } else {
+        return thunkAPI.rejectWithValue('No data available');
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -3,8 +3,12 @@ import css from './RegistrationForm.module.css';
 import { Input } from 'antd';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../../redux/auth/operations';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ handelSubmit }) => {
+  const dispatch = useDispatch();
+
   const schema = Yup.object().shape({
     name: Yup.string()
       .min(2, 'Name must be at least 2 characters')
@@ -30,7 +34,16 @@ const RegistrationForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    dispatch(
+      registerUser({
+        email: data.email,
+        password: data.password,
+        name: data.name,
+      })
+    );
+    handelSubmit();
+  };
 
   //   console.log(watch('name'));
 

@@ -14,6 +14,10 @@ const LoginModal = ({ isLoginModalOpen, setIsLoginModalShow }) => {
     setIsModalOpen(false);
     setIsLoginModalShow(false);
   };
+  const handelSubmit = () => {
+    setIsModalOpen(false);
+    setIsLoginModalShow(false);
+  };
 
   return (
     <>
@@ -27,7 +31,7 @@ const LoginModal = ({ isLoginModalOpen, setIsLoginModalShow }) => {
         classNames={{ content: css.modalContent }}
         centered={true}
       >
-        <LoginForm />
+        <LoginForm handelSubmit={handelSubmit} />
       </Modal>
     </>
   );

@@ -3,7 +3,10 @@ import { getTeachers } from './operations';
 
 const INITIAL_STATE = {
   teachers: [],
-  favoriteTeachers: [],
+  lastKeys: [],
+  hasNextPage: false,
+  isLoading: false,
+  error: null,
 };
 
 export const teachersSlice = createSlice({
@@ -16,7 +19,9 @@ export const teachersSlice = createSlice({
         state.error = null;
       })
       .addCase(getTeachers.fulfilled, (state, action) => {
-        state.teachers = action.payload;
+        state.teachers = [...state.teachers, ...action.payload.teachers];
+        state.lastKeys.push(action.payload.lastKey);
+        state.hasNextPage = action.payload.hasNextPage;
       })
       .addCase(getTeachers.rejected, (state, action) => {
         state.error = action.payload;

@@ -15,9 +15,9 @@ const FiltersForm = () => {
   const watchedValues = watch();
 
   // Виводимо значення в консоль при кожній зміні
-  useEffect(() => {
-    console.log('Current values:', watchedValues);
-  }, [watchedValues]);
+  // useEffect(() => {
+  //   console.log('Current values:', watchedValues);
+  // }, [watchedValues]);
 
   return (
     <form className={css.filtersForm}>

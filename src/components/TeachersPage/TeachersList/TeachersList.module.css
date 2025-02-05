@@ -9,6 +9,7 @@
   padding: 24px;
   width: 100%;
   background-color: var(--white);
+  margin-bottom: 64px;
 }
 .teachersListItem:not(:last-child) {
   margin-bottom: 32px;
