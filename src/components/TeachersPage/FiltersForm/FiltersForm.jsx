@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import css from './FiltersForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { Select } from 'antd';
 
 const FiltersForm = () => {
-  const { control, watch } = useForm({
+  const { control } = useForm({
     defaultValues: {
       language: 'French',
       level: 'A1 Beginner',
@@ -12,11 +12,11 @@ const FiltersForm = () => {
     },
   });
 
-  const watchedValues = watch();
+  // const watchedValues = watch();
 
-  useEffect(() => {
-    console.log('Current values:', watchedValues);
-  }, [watchedValues]);
+  // useEffect(() => {
+  //   console.log('Current values:', watchedValues);
+  // }, [watchedValues]);
 
   return (
     <form className={css.filtersForm}>

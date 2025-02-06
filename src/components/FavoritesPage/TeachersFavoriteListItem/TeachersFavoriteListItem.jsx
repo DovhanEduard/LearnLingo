@@ -1,12 +1,10 @@
-import css from './TeachersListItem.module.css';
+import css from './TeachersFavoriteListItem.module.css';
 import { MdOutlineStar } from 'react-icons/md';
 import { FiBookOpen } from 'react-icons/fi';
 import { LuHeart } from 'react-icons/lu';
 
 import { useState } from 'react';
-import ReviewsList from '../ReviewsList/ReviewsList';
 import { nanoid } from '@reduxjs/toolkit';
-import BookModal from '../BookModal/BookModal';
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import {
@@ -14,8 +12,10 @@ import {
   selectAuthUser,
 } from '../../../redux/auth/selectors';
 import toast, { Toaster } from 'react-hot-toast';
+import ReviewsList from 'components/TeachersPage/ReviewsList/ReviewsList';
+import BookModal from 'components/TeachersPage/BookModal/BookModal';
 
-const TeachersListItem = ({ teacher }) => {
+const TeachersFavoriteListItem = ({ teacher }) => {
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
 
@@ -26,6 +26,7 @@ const TeachersListItem = ({ teacher }) => {
     const selectedId = JSON.parse(
       localStorage.getItem(`selectedTeacher${teacher.id}${user.email}`)
     );
+
     const isSelected = Boolean(selectedId);
 
     if (selectedId === 0 || isSelected) {
@@ -202,4 +203,4 @@ const TeachersListItem = ({ teacher }) => {
   );
 };
 
-export default TeachersListItem;
+export default TeachersFavoriteListItem;

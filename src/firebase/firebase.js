@@ -25,12 +25,8 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 // Set persistence before any authentication actions
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log('Persistenced');
-  })
-  .catch(error => {
-    console.log('Error', error.message);
-  });
+setPersistence(auth, browserLocalPersistence).catch(error => {
+  console.log('Error', error.message);
+});
 
 export { app, auth, database };

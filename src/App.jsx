@@ -1,5 +1,4 @@
 import Layout from 'components/Common/Layout/Layout';
-import FavoritesPage from 'pages/FavoritesPage';
 import HomePage from 'pages/HomePage/HomePage';
 import TeachersPage from 'pages/TeachersPage/TeachersPage';
 import { Route, Routes } from 'react-router';
@@ -9,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import { logout, refreshUser } from './redux/auth/operations';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/firebase';
+import FavoritesPage from 'pages/FavoritesPage/FavoritesPage';
+import PrivateRoute from 'components/Common/PrivateRoute/PrivateRoute';
 // import { useEffect, lazy, Suspense } from 'react';
 
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -40,8 +41,11 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/teachers" element={<TeachersPage />} />
+          <Route
+            path="/favorites"
+            element={<PrivateRoute component={<FavoritesPage />} />}
+          />
         </Routes>
       </Layout>
     </>

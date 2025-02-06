@@ -48,6 +48,13 @@ const AppBar = () => {
                 Teachers
               </Link>
             </li>
+            {isLoggedIn && (
+              <li>
+                <Link className={css.navLink} to="favorites">
+                  Favorites
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 

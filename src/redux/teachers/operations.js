@@ -7,6 +7,7 @@ import {
   limitToFirst,
   startAfter,
   get,
+  child,
 } from 'firebase/database';
 
 export const getTeachers = createAsyncThunk(
@@ -54,6 +55,31 @@ export const getTeachers = createAsyncThunk(
           lastKey: lastKeyForNextPage,
           hasNextPage,
         };
+      } else {
+        return thunkAPI.rejectWithValue('No data available');
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllTeachers = createAsyncThunk(
+  'teachers/getAllTeachers',
+  async (_, thunkAPI) => {
+    const dbRef = ref(database);
+
+    try {
+      const snapshot = await get(child(dbRef, '/'));
+
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const teachers = Object.keys(data).map(key => ({
+          id: key,
+          ...data[key],
+        }));
+
+        return { teachers };
       } else {
         return thunkAPI.rejectWithValue('No data available');
       }

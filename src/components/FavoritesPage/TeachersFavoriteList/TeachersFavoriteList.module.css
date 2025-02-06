@@ -1,0 +1,16 @@
+.teachersList {
+  margin: 0 auto;
+}
+
+.teachersListItem {
+  display: flex;
+  gap: 48px;
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  background-color: var(--white);
+  margin-bottom: 64px;
+}
+.teachersListItem:not(:last-child) {
+  margin-bottom: 32px;
+}

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTeachers, clearTeachersList } from './operations';
+import { getTeachers, clearTeachersList, getAllTeachers } from './operations';
 
 const INITIAL_STATE = {
   teachers: [],
@@ -27,6 +27,20 @@ export const teachersSlice = createSlice({
         state.hasNextPage = action.payload.hasNextPage;
       })
       .addCase(getTeachers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(getAllTeachers.pending, state => {
+        state.error = null;
+        state.isLoading = true;
+      })
+      .addCase(getAllTeachers.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.teachers = action.payload.teachers;
+      })
+      .addCase(getAllTeachers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
