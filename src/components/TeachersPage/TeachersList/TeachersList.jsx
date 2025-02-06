@@ -6,12 +6,17 @@ import {
   clearTeachersList,
   getTeachers,
 } from '../../../redux/teachers/operations';
-import { selectTeachers } from '../../../redux/teachers/selectors';
+import {
+  selectTeachers,
+  selectTeachersIsLoading,
+} from '../../../redux/teachers/selectors';
+import Loader from 'components/Common/Loader/Loader';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
 
   const teachersList = useSelector(selectTeachers);
+  const isLoading = useSelector(selectTeachersIsLoading);
 
   useEffect(() => {
     dispatch(getTeachers());
@@ -22,15 +27,19 @@ const TeachersList = () => {
   }, []);
 
   return (
-    <ul className={css.teachersList}>
-      {teachersList.map(teacher => {
-        return (
-          <li key={teacher.id} className={css.teachersListItem}>
-            <TeachersListItem teacher={teacher} />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul className={css.teachersList}>
+        {teachersList.map(teacher => {
+          return (
+            <li key={teacher.id} className={css.teachersListItem}>
+              <TeachersListItem teacher={teacher} />
+            </li>
+          );
+        })}
+      </ul>
+
+      {isLoading && <Loader />}
+    </>
   );
 };
 

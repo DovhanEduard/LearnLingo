@@ -5,13 +5,18 @@ import {
   clearTeachersList,
   getAllTeachers,
 } from '../../../redux/teachers/operations';
-import { selectTeachers } from '../../../redux/teachers/selectors';
+import {
+  selectTeachers,
+  selectTeachersIsLoading,
+} from '../../../redux/teachers/selectors';
 import TeachersFavoriteListItem from '../TeachersFavoriteListItem/TeachersFavoriteListItem';
 import { selectAuthUser } from '../../../redux/auth/selectors';
+import Loader from 'components/Common/Loader/Loader';
 
 const TeachersFavoriteList = () => {
   const dispatch = useDispatch();
 
+  const isLoading = useSelector(selectTeachersIsLoading);
   const teachersList = useSelector(selectTeachers);
   const user = useSelector(selectAuthUser);
 
@@ -36,15 +41,18 @@ const TeachersFavoriteList = () => {
   }, []);
 
   return (
-    <ul className={css.teachersList}>
-      {favoritesTeachersList?.map(teacher => {
-        return (
-          <li key={teacher.id} className={css.teachersListItem}>
-            <TeachersFavoriteListItem teacher={teacher} />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ul className={css.teachersList}>
+        {favoritesTeachersList?.map(teacher => {
+          return (
+            <li key={teacher.id} className={css.teachersListItem}>
+              <TeachersFavoriteListItem teacher={teacher} />
+            </li>
+          );
+        })}
+      </ul>
+      {isLoading && <Loader />}
+    </>
   );
 };
 
