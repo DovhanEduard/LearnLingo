@@ -10,12 +10,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/firebase';
 import FavoritesPage from 'pages/FavoritesPage/FavoritesPage';
 import PrivateRoute from 'components/Common/PrivateRoute/PrivateRoute';
-// import { useEffect, lazy, Suspense } from 'react';
-
-// const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-// const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
-// const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
-// const TrackerPage = lazy(() => import('./pages/TrackerPage/TrackerPage'));
 
 function App() {
   const dispatch = useDispatch();

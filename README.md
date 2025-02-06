@@ -29,6 +29,8 @@ tutors.
 
 - react-hot-toast (notifications)
 
+- Yup (for form validation)
+
 ## Pages
 
 - Home – Main page with information about the website

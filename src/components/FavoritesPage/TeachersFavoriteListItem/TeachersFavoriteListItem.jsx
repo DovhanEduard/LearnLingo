@@ -39,8 +39,6 @@ const TeachersFavoriteListItem = ({ teacher }) => {
     const toggleSelect = !isSelected;
 
     if (isLoggedIn !== true) {
-      console.log('here');
-
       toast.error('You need to be sign in', {
         id: 'uniqueToast',
         duration: 3000,

@@ -19,12 +19,10 @@ const firebaseConfig = {
   databaseURL: env('VITE_DATABASE_URL'),
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-// Set persistence before any authentication actions
 setPersistence(auth, browserLocalPersistence).catch(error => {
   console.log('Error', error.message);
 });

@@ -20,7 +20,6 @@ const FiltersForm = () => {
 
   return (
     <form className={css.filtersForm}>
-      {/* Language Dropdown */}
       <Controller
         name="language"
         control={control}
@@ -58,8 +57,6 @@ const FiltersForm = () => {
           </div>
         )}
       />
-
-      {/* Level Dropdown */}
       <Controller
         name="level"
         control={control}
@@ -93,8 +90,6 @@ const FiltersForm = () => {
           </div>
         )}
       />
-
-      {/* Price Dropdown */}
       <Controller
         name="price"
         control={control}
