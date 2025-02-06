@@ -32,7 +32,7 @@
   margin-bottom: 64px;
 }
 
-.link {
+.getStartedBtn {
   font-weight: 700;
   font-size: 18px;
   line-height: 1.55556;
@@ -43,4 +43,8 @@
 
   height: 60px;
   background-color: var(--green);
+}
+
+.getStartedBtn:hover {
+  background-color: var(--light-green);
 }

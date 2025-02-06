@@ -23,6 +23,10 @@
   padding-bottom: 12px;
 }
 
+.navLink:hover {
+  color: var(--light-green);
+}
+
 .loggedInBar {
   display: flex;
   gap: 16px;
@@ -55,6 +59,10 @@
   padding-bottom: 12px;
 }
 
+.logoutBtn:hover {
+  color: var(--light-green);
+}
+
 .authListBtn {
   display: flex;
   gap: 16px;
@@ -63,7 +71,7 @@
 .loginIcon {
   width: 20px;
   height: 20px;
-  color: var(--light-green);
+  color: var(--green);
 }
 
 .loginBtn {
@@ -79,6 +87,11 @@
   padding-bottom: 12px;
 }
 
+.loginBtn:hover .loginIcon,
+.loginBtn:hover {
+  color: var(--light-green);
+}
+
 .regBtn {
   font-weight: 700;
   font-size: 16px;
@@ -92,4 +105,8 @@
   background-color: #121417;
   padding-top: 12px;
   padding-bottom: 12px;
+}
+
+.regBtn:hover {
+  color: var(--light-green);
 }

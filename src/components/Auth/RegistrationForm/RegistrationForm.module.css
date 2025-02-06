@@ -82,3 +82,7 @@ input[name='password'] {
   margin-top: 20px;
   background-color: var(--green);
 }
+
+.loginFormBtn:hover {
+  background-color: var(--light-green);
+}

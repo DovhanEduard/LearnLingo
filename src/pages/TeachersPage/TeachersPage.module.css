@@ -18,4 +18,9 @@
   width: 183px;
   height: 60px;
   background-color: var(--green);
+  margin-bottom: 40px;
+}
+
+.loadMoreBtn:hover {
+  background-color: var(--light-green);
 }

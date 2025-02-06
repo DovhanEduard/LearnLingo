@@ -51,7 +51,7 @@ git clone https://github.com/DovhanEduard/LearnLingo.git
 $ npm install
 ```
 
-Для запуску проекту використовуйте
+Для запуску проекту використовуйте команду:
 
 ```sh
 $ npm run dev

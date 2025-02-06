@@ -70,3 +70,7 @@
   margin-top: 40px;
   background-color: var(--green);
 }
+
+.loginFormBtn:hover {
+  background-color: var(--light-green);
+}

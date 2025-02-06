@@ -1,7 +1,13 @@
-import { Link } from 'react-router';
 import css from './About.module.css';
+import RegistrationModal from 'components/Auth/RegistrationModal/RegistrationModal';
+import { useState } from 'react';
 
 const About = () => {
+  const [isRegModalShow, setIsRegModalShow] = useState(false);
+
+  const openRegModal = () => {
+    setIsRegModalShow(true);
+  };
   return (
     <div className={css.background}>
       <h1 className={css.title}>
@@ -13,9 +19,18 @@ const About = () => {
         Elevate your language proficiency to new heights by connecting with
         highly qualified and experienced tutors.
       </p>
-      <Link className={css.link} to="/registration">
+      <button
+        className={css.getStartedBtn}
+        type="button"
+        onClick={openRegModal}
+      >
         Get started
-      </Link>
+      </button>
+
+      <RegistrationModal
+        isRegModalOpen={isRegModalShow}
+        setIsRegModalShow={setIsRegModalShow}
+      />
     </div>
   );
 };

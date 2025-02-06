@@ -1,7 +1,7 @@
 import css from './AppBar.module.css';
 import Logo from '../Logo/Logo';
 import { MdLogin } from 'react-icons/md';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 import RegistrationModal from 'components/Auth/RegistrationModal/RegistrationModal';
 import { useState } from 'react';
 import LoginModal from 'components/Auth/LoginModal/LoginModal';
@@ -39,20 +39,20 @@ const AppBar = () => {
         <nav>
           <ul className={css.navList}>
             <li>
-              <Link className={css.navLink} to="/">
+              <NavLink className={css.navLink} to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className={css.navLink} to="teachers">
+              <NavLink className={css.navLink} to="teachers">
                 Teachers
-              </Link>
+              </NavLink>
             </li>
             {isLoggedIn && (
               <li>
-                <Link className={css.navLink} to="favorites">
+                <NavLink className={css.navLink} to="favorites">
                   Favorites
-                </Link>
+                </NavLink>
               </li>
             )}
           </ul>

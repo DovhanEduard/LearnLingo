@@ -64,6 +64,10 @@
   height: 26px;
 }
 
+.heartIcon:hover {
+  color: var(--light-green);
+}
+
 .heartIcon.isSelected {
   color: var(--green);
   fill: var(--green);
@@ -146,4 +150,8 @@
   height: 60px;
   margin-top: 32px;
   background-color: var(--green);
+}
+
+.bookTrialBtn:hover {
+  background-color: var(--light-green);
 }

@@ -1,3 +1,14 @@
+.logoWrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.ukraineFlag {
+  width: 28px;
+  height: 28px;
+}
+
 .logo {
   font-weight: 500;
   font-size: 20px;

@@ -40,3 +40,7 @@ a {
   overflow: hidden;
   clip-path: inset(50%);
 }
+
+.active {
+  color: var(--green);
+}
