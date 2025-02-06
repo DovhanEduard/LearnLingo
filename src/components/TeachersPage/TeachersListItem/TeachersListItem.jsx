@@ -1,15 +1,62 @@
 import css from './TeachersListItem.module.css';
 import { MdOutlineStar } from 'react-icons/md';
 import { FiBookOpen } from 'react-icons/fi';
-import { FaRegHeart } from 'react-icons/fa';
+import { LuHeart } from 'react-icons/lu';
+
 import { useState } from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import { nanoid } from '@reduxjs/toolkit';
 import BookModal from '../BookModal/BookModal';
+import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import {
+  selectAuthIsLoggedIn,
+  selectAuthUser,
+} from '../../../redux/auth/selectors';
+import toast, { Toaster } from 'react-hot-toast';
 
 const TeachersListItem = ({ teacher }) => {
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
+
+  const isLoggedIn = useSelector(selectAuthIsLoggedIn);
+  const user = useSelector(selectAuthUser);
+
+  const [isSelected, setIsSelected] = useState(() => {
+    const isSelectedCamper = JSON.parse(
+      localStorage.getItem(`selectedTeacher${teacher.id}${user.email}`)
+    );
+
+    if (isSelectedCamper) {
+      return true;
+    }
+    return false;
+  });
+
+  const selectFavoriteTecher = () => {
+    const toggleSelect = !isSelected;
+
+    if (isLoggedIn !== true) {
+      console.log('here');
+
+      toast.error('You need to be sign in', {
+        id: 'uniqueToast',
+        duration: 3000,
+        position: 'top-center',
+      });
+    }
+
+    if (toggleSelect === false) {
+      localStorage.removeItem(`selectedTeacher${teacher.id}${user.email}`);
+    } else {
+      localStorage.setItem(
+        `selectedTeacher${teacher.id}${user.email}`,
+        toggleSelect
+      );
+    }
+
+    setIsSelected(toggleSelect);
+  };
 
   const openBookModal = () => {
     setIsBookModalOpen(true);
@@ -55,9 +102,34 @@ const TeachersListItem = ({ teacher }) => {
             </li>
           </ul>
 
-          <button className={css.heartButton} type="button">
-            <FaRegHeart className={css.heartIcon} />
+          <button
+            className={css.heartButton}
+            type="button"
+            onClick={selectFavoriteTecher}
+          >
+            <LuHeart
+              className={clsx(css.heartIcon, {
+                [css.isSelected]: isLoggedIn && isSelected,
+              })}
+            />
           </button>
+
+          <Toaster
+            toastOptions={{
+              className: 'toast',
+              style: {
+                border: 'none',
+                padding: '12px',
+                color: '#fff',
+                background: '#121417',
+                borderRadius: 12,
+                height: 48,
+                fontWeight: 700,
+                fontSize: 16,
+                lineHeight: 1.25,
+              },
+            }}
+          />
         </div>
 
         <h2 className={css.teacherName}>

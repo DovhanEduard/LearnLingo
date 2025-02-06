@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import TeachersListItem from '../TeachersListItem/TeachersListItem';
 import css from './TeachersList.module.css';
 import { useEffect } from 'react';
-import { getTeachers } from '../../../redux/teachers/operations';
+import {
+  clearTeachersList,
+  getTeachers,
+} from '../../../redux/teachers/operations';
 import { selectTeachers } from '../../../redux/teachers/selectors';
-import { nanoid } from '@reduxjs/toolkit';
 
 const TeachersList = () => {
   const dispatch = useDispatch();
@@ -13,13 +15,17 @@ const TeachersList = () => {
 
   useEffect(() => {
     dispatch(getTeachers());
+
+    return () => {
+      dispatch(clearTeachersList());
+    };
   }, []);
 
   return (
     <ul className={css.teachersList}>
       {teachersList.map(teacher => {
         return (
-          <li key={nanoid()} className={css.teachersListItem}>
+          <li key={teacher.id} className={css.teachersListItem}>
             <TeachersListItem teacher={teacher} />
           </li>
         );

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import css from './FiltersForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
+import { Select } from 'antd';
 
 const FiltersForm = () => {
   const { control, watch } = useForm({
@@ -11,13 +12,11 @@ const FiltersForm = () => {
     },
   });
 
-  // Спостерігаємо за всіма полями
   const watchedValues = watch();
 
-  // Виводимо значення в консоль при кожній зміні
-  // useEffect(() => {
-  //   console.log('Current values:', watchedValues);
-  // }, [watchedValues]);
+  useEffect(() => {
+    console.log('Current values:', watchedValues);
+  }, [watchedValues]);
 
   return (
     <form className={css.filtersForm}>
@@ -28,13 +27,34 @@ const FiltersForm = () => {
         render={({ field }) => (
           <div className={css.dropdownWrapper}>
             <label className={css.dropdownLabel}>Languages</label>
-            <select className={css.dropdown} {...field}>
-              <option value="French">French</option>
-              <option value="English">English</option>
-              <option value="German">German</option>
-              <option value="Ukrainian">Ukrainian</option>
-              <option value="Polish">Polish</option>
-            </select>
+            <Select
+              {...field}
+              className={css.dropdown}
+              popupClassName={css.popUp}
+              variant="borderless"
+              options={[
+                {
+                  value: 'French',
+                  label: 'French',
+                },
+                {
+                  value: 'English',
+                  label: 'English',
+                },
+                {
+                  value: 'German',
+                  label: 'German',
+                },
+                {
+                  value: 'Ukrainian',
+                  label: 'Ukrainian',
+                },
+                {
+                  value: 'Polish',
+                  label: 'Polish',
+                },
+              ]}
+            />
           </div>
         )}
       />
@@ -46,14 +66,30 @@ const FiltersForm = () => {
         render={({ field }) => (
           <div className={css.dropdownWrapper}>
             <label className={css.dropdownLabel}>Level of knowledge</label>
-            <select className={css.dropdown} {...field}>
-              <option value="A1 Beginner">A1 Beginner</option>
-              <option value="A2 Elementary">A2 Elementary</option>
-              <option value="B1 Intermediate">B1 Intermediate</option>
-              <option value="B2 Upper-Intermediate">
-                B2 Upper-Intermediate
-              </option>
-            </select>
+            <Select
+              {...field}
+              className={css.dropdown}
+              popupClassName={css.popUp}
+              variant="borderless"
+              options={[
+                {
+                  value: 'A1 Beginner',
+                  label: 'A1 Beginner',
+                },
+                {
+                  value: 'A2 Elementary',
+                  label: 'A2 Elementary',
+                },
+                {
+                  value: 'B1 Intermediate',
+                  label: 'B1 Intermediate',
+                },
+                {
+                  value: 'B2 Upper-Intermediate',
+                  label: 'B2 Upper-Intermediate',
+                },
+              ]}
+            />
           </div>
         )}
       />
@@ -65,12 +101,30 @@ const FiltersForm = () => {
         render={({ field }) => (
           <div className={css.dropdownWrapper}>
             <label className={css.dropdownLabel}>Price</label>
-            <select className={css.dropdown} {...field}>
-              <option value="10 $">10 $</option>
-              <option value="20 $">20 $</option>
-              <option value="30 $">30 $</option>
-              <option value="40 $">40 $</option>
-            </select>
+            <Select
+              {...field}
+              className={css.dropdown}
+              popupClassName={css.popUp}
+              variant="borderless"
+              options={[
+                {
+                  value: '10 $',
+                  label: '10 $',
+                },
+                {
+                  value: '20 $',
+                  label: '20 $',
+                },
+                {
+                  value: '30 $',
+                  label: '30 $',
+                },
+                {
+                  value: '40 $',
+                  label: '40 $',
+                },
+              ]}
+            />
           </div>
         )}
       />

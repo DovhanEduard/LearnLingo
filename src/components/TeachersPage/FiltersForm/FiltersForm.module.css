@@ -18,21 +18,21 @@
 }
 
 .dropdown {
+  font-family: 'Roboto', sans-serif;
+
   appearance: none;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11111;
   color: var(--text-color-black);
 
-  padding: 14px 18px;
-  border-radius: 14px;
-  height: 48px;
-  border: none;
-  outline: transparent;
-}
-
-.dropdown option {
   border-radius: 12px;
   width: 221px;
-  height: 160px;
+  height: 48px;
+  background-color: #fff;
+}
+
+.popUp {
+  border-radius: 12px;
+  background-color: #fff;
 }

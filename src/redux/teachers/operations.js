@@ -62,3 +62,10 @@ export const getTeachers = createAsyncThunk(
     }
   }
 );
+
+export const clearTeachersList = createAsyncThunk(
+  'teachers/clearTeachersList',
+  async () => {
+    return null;
+  }
+);
