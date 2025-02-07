@@ -1,15 +1,15 @@
 import Layout from 'components/Common/Layout/Layout';
-import HomePage from 'pages/HomePage/HomePage';
-import TeachersPage from 'pages/TeachersPage/TeachersPage';
 import { Route, Routes } from 'react-router';
-
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout, refreshUser } from './redux/auth/operations';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/firebase';
-import FavoritesPage from 'pages/FavoritesPage/FavoritesPage';
 import PrivateRoute from 'components/Common/PrivateRoute/PrivateRoute';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const TeachersPage = lazy(() => import('./pages/TeachersPage/TeachersPage'));
+const FavoritesPage = lazy(() => import('./pages/FavoritesPage/FavoritesPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -33,14 +33,17 @@ function App() {
   return (
     <>
       <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/teachers" element={<TeachersPage />} />
-          <Route
-            path="/favorites"
-            element={<PrivateRoute component={<FavoritesPage />} />}
-          />
-        </Routes>
+        <Suspense>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/teachers" element={<TeachersPage />} />
+            <Route
+              path="/favorites"
+              element={<PrivateRoute component={<FavoritesPage />} />}
+            />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </>
   );

@@ -11,11 +11,11 @@ import {
   selectAuthIsLoggedIn,
   selectAuthUser,
 } from '../../../redux/auth/selectors';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import ReviewsList from 'components/TeachersPage/ReviewsList/ReviewsList';
 import BookModal from 'components/TeachersPage/BookModal/BookModal';
 
-const TeachersFavoriteListItem = ({ teacher }) => {
+const TeachersFavoriteListItem = ({ teacher, setFavoritesTeachersList }) => {
   const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
 
@@ -38,21 +38,11 @@ const TeachersFavoriteListItem = ({ teacher }) => {
   const selectFavoriteTecher = () => {
     const toggleSelect = !isSelected;
 
-    if (isLoggedIn !== true) {
-      toast.error('You need to be sign in', {
-        id: 'uniqueToast',
-        duration: 3000,
-        position: 'top-center',
-      });
-    }
-
     if (toggleSelect === false) {
+      setFavoritesTeachersList(prevFavList => {
+        return prevFavList.filter(prevFav => prevFav.id !== teacher.id);
+      });
       localStorage.removeItem(`selectedTeacher${teacher.id}${user.email}`);
-    } else {
-      localStorage.setItem(
-        `selectedTeacher${teacher.id}${user.email}`,
-        teacher.id
-      );
     }
 
     setIsSelected(toggleSelect);

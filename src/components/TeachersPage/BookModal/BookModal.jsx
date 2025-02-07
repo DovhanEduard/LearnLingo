@@ -20,6 +20,10 @@ const BookModal = ({
     setIsModalOpen(false);
     setIsBookModalOpen(false);
   };
+  const handleBook = () => {
+    setIsModalOpen(false);
+    setIsBookModalOpen(false);
+  };
 
   return (
     <>
@@ -33,7 +37,12 @@ const BookModal = ({
         classNames={{ content: css.modalContent }}
         centered={true}
       >
-        <BookForm avatar={avatar} name={name} surname={surname} />
+        <BookForm
+          avatar={avatar}
+          name={name}
+          surname={surname}
+          handleBook={handleBook}
+        />
       </Modal>
     </>
   );

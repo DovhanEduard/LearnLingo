@@ -2,8 +2,9 @@ import css from './BookForm.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import toast, { Toaster } from 'react-hot-toast';
 
-const BookForm = ({ avatar, name, surname }) => {
+const BookForm = ({ avatar, name, surname, handleBook }) => {
   const schema = Yup.object().shape({
     reason: Yup.string().required('Please select an option'),
     fullName: Yup.string()
@@ -27,12 +28,41 @@ const BookForm = ({ avatar, name, surname }) => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      reason: '123',
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+    },
   });
 
-  const onSubmit = data => console.log(data);
+  watch('reason');
+
+  const onSubmit = () => {
+    toast.success('You’ve successfully booked your lesson.', {
+      id: 'uniqueBookToast',
+      duration: 3000,
+      position: 'bottom-left',
+      style: {
+        border: 'none',
+        padding: '12px',
+        color: '#fff',
+        backgroundColor: '#9fbaae',
+        borderRadius: 12,
+        height: 48,
+        fontWeight: 500,
+        fontSize: 16,
+        lineHeight: 1,
+      },
+    });
+
+    handleBook();
+  };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +93,8 @@ const BookForm = ({ avatar, name, surname }) => {
           <input
             type="radio"
             value="Career and business"
-            {...register('reason', { required: 'Please select an option' })}
+            {...register('reason')}
+            onChange={() => setValue('reason', 'Career and business')}
             className={css.radioBtn}
           />
           <span>Career and business</span>
@@ -73,7 +104,8 @@ const BookForm = ({ avatar, name, surname }) => {
           <input
             type="radio"
             value="Lesson for kids"
-            {...register('reason', { required: 'Please select an option' })}
+            {...register('reason')}
+            onChange={() => setValue('reason', 'Lesson for kids')}
             className={css.radioBtn}
           />
           <span>Lesson for kids</span>
@@ -83,7 +115,8 @@ const BookForm = ({ avatar, name, surname }) => {
           <input
             type="radio"
             value="Living abroad"
-            {...register('reason', { required: 'Please select an option' })}
+            {...register('reason')}
+            onChange={() => setValue('reason', 'Living abroad')}
             className={css.radioBtn}
           />
           <span>Living abroad</span>
@@ -93,7 +126,8 @@ const BookForm = ({ avatar, name, surname }) => {
           <input
             type="radio"
             value="Exams and coursework"
-            {...register('reason', { required: 'Please select an option' })}
+            {...register('reason')}
+            onChange={() => setValue('reason', 'Exams and coursework')}
             className={css.radioBtn}
           />
           <span>Exams and coursework</span>
@@ -103,7 +137,8 @@ const BookForm = ({ avatar, name, surname }) => {
           <input
             type="radio"
             value="Culture, travel or hobby"
-            {...register('reason', { required: 'Please select an option' })}
+            onChange={() => setValue('reason', 'Culture, travel or hobby')}
+            {...register('reason')}
             className={css.radioBtn}
           />
           <span>Culture, travel or hobby</span>
@@ -138,6 +173,8 @@ const BookForm = ({ avatar, name, surname }) => {
       <button className={css.formBtn} type="submit">
         Book
       </button>
+
+      <Toaster />
     </form>
   );
 };

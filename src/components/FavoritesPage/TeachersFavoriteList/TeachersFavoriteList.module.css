@@ -2,6 +2,19 @@
   margin: 0 auto;
 }
 
+.noFavYetTextWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.noFavYetText {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-color-black);
+}
+
 .teachersListItem {
   display: flex;
   gap: 48px;
